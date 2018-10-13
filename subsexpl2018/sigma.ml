@@ -114,62 +114,62 @@ let ran_normal_ls expinit pos =
         posit := (List.hd(matchingApp !exp [] []));
 	exp := (appreduction !exp !posit);
 	l_upl := ((!exp,2,!posit,"App") :: !l_upl)
-      done;!exp;
+      done; ignore (!exp);
       while (matchingAbs !exp [] []) <> [] do
         posit := (List.hd (matchingAbs !exp [] []));
 	exp := (absreduction !exp !posit);
 	l_upl := (!exp,3,!posit,"Abs") :: !l_upl
-      done;!exp; 
+      done; ignore (!exp); 
       while (matchingClos !exp [] []) <> [] do
         posit := (List.hd (matchingClos !exp [] []));
 	exp := (closreduction !exp !posit);
 	l_upl := (!exp,4,!posit,"Clos") :: !l_upl
-      done;!exp;
+      done; ignore (!exp);
       while (matchingVarCons !exp [] []) <> [] do
         posit := (List.hd (matchingVarCons !exp [] []));
 	exp := (varconsreduction !exp !posit);
 	l_upl := (!exp,5,!posit,"VarsCons") :: !l_upl
-      done;!exp;
+      done; ignore (!exp);
       while (matchingId !exp [] []) <> [] do
         posit := (List.hd (matchingId !exp [] []));
 	exp := (idreduction !exp !posit);
 	l_upl := (!exp,6,!posit,"Id") :: !l_upl
-      done;!exp;
+      done; ignore (!exp);
       while (matchingAssoc !exp [] []) <> [] do
         posit := (List.hd (matchingAssoc !exp [] []));
 	exp := (assocreduction !exp !posit);
 	l_upl := (!exp,7,!posit,"Assoc") :: !l_upl
-      done;!exp;
+      done; ignore (!exp);
       while (matchingMap !exp [] []) <> [] do
         posit := (List.hd (matchingMap !exp [] []));
 	exp := (mapreduction !exp !posit);
 	l_upl := (!exp,8,!posit,"Map") :: !l_upl
-      done;!exp;
+      done; ignore (!exp);
       while (matchingIdL !exp [] []) <> [] do
         posit := (List.hd (matchingIdL !exp [] []));
 	exp := (idlreduction !exp !posit);
 	l_upl := (!exp,9,!posit,"IdL") :: !l_upl
-      done;!exp;
+      done; ignore (!exp);
       while (matchingIdR !exp [] []) <> [] do
         posit := (List.hd (matchingIdR !exp [] []));
 	exp := (idrreduction !exp !posit);
 	l_upl := (!exp,10,!posit,"IdR") :: !l_upl
-      done;!exp;
+      done; ignore (!exp);
       while (matchingShiftCons !exp [] []) <> [] do
         posit := (List.hd (matchingShiftCons !exp [] []));
 	exp := (shiftconsreduction !exp !posit);
 	l_upl := (!exp,11,!posit,"ShiftCons") :: !l_upl
-      done;!exp;
+      done; ignore (!exp);
       while (matchingVarShift !exp [] []) <> [] do
         posit := (List.hd (matchingVarShift !exp [] []));
 	exp := (varshiftreduction !exp !posit);
 	l_upl := (!exp,12,!posit,"VarShift") :: !l_upl
-      done;!exp;
+      done; ignore (!exp);
       while (matchingSCons !exp [] []) <> [] do
         posit := (List.hd (matchingSCons !exp [] []));
 	exp := (sconsreduction !exp !posit);
 	l_upl := (!exp,13,!posit,"SCons") :: !l_upl
-      done;!exp;
+      done; ignore (!exp);
     done;
     !l_upl
 
@@ -299,17 +299,17 @@ let rec lsigma f =
             begin
 	      match r_num with
                 | 17 -> 
-                    Output.print_in_latex "sigmarules" 1;
+                    ignore (Output.print_in_latex "sigmarules" 1);
                     internal_loop l_upl
                 | 18 ->
                     internal_loop (List.tl l_upl)
 	        | 19 ->
 		    print_newline();
 		    Output.print_history (List.rev l_upl) print_exp_ls; 
-		    Input.get_line ();       
+		    ignore (Input.get_line ());
 		    internal_loop l_upl
 	        | 20 -> 
-		    Output.latex_output l_upl;
+		    ignore (Output.latex_output l_upl);
 		    internal_loop l_upl
 	        | 21 -> 
                     Output.save_red l_upl init_exp 1;

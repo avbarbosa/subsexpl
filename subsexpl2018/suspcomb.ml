@@ -115,57 +115,57 @@ let ran_normal_suscomb expinit pos =
         posit := (List.hd (matching_combr1 !exp [] []));
 	exp := (r1_combreduction !exp !posit);
 	l_trp := ((!exp,2,!posit,"r_1") :: !l_trp)
-      done;!exp;
+      done; ignore (!exp);
       while (matching_combr2 !exp [] []) <> [] do
         posit := (List.hd (matching_combr2 !exp [] []));
 	exp := (r2_combreduction !exp !posit);
 	l_trp := ((!exp,3,!posit,"r_2") :: !l_trp)
-      done;!exp;
+      done; ignore (!exp);
       while (matching_combr3 !exp [] []) <> [] do
         posit := (List.hd (matching_combr3 !exp [] []));
 	exp := (r3_combreduction !exp !posit);
 	l_trp := ((!exp,4,!posit,"r_3") :: !l_trp)
-      done;!exp;
+      done; ignore (!exp);
       while (matching_combr4 !exp [] []) <> [] do
  	posit := (List.hd (matching_combr4 !exp [] []));
         exp := (r4_combreduction !exp !posit);
 	l_trp := ((!exp,5,!posit,"r_4") :: !l_trp)
-      done;!exp;
+      done; ignore (!exp);
       while (matching_combr5 !exp [] []) <> [] do
         posit := (List.hd (matching_combr5 !exp [] []));
 	exp := (r5_combreduction !exp !posit);
 	l_trp := ((!exp,6,!posit,"r_5") :: !l_trp)
-      done;!exp;
+      done; ignore (!exp);
       while (matching_combr6 !exp [] []) <> [] do
         posit := (List.hd (matching_combr6 !exp [] []));
 	exp := (r6_combreduction !exp !posit);
 	l_trp := ((!exp,7,!posit,"r_6") :: !l_trp)
-      done;!exp;
+      done; ignore (!exp);
       while (matching_combr7 !exp [] []) <> [] do
         posit := (List.hd (matching_combr7 !exp [] []));
 	exp := (r7_combreduction !exp !posit);
 	l_trp := ((!exp,8,!posit,"r_7") :: !l_trp)
-      done;!exp;
+      done; ignore (!exp);
       while (matching_combr8 !exp [] []) <> [] do
         posit := (List.hd (matching_combr8 !exp [] []));
 	exp := (r8_combreduction !exp !posit);
 	l_trp := ((!exp,9,!posit,"r_8") :: !l_trp)
-      done;!exp;
+      done; ignore (!exp);
       while (matching_combr9 !exp [] []) <> [] do
         posit := (List.hd (matching_combr9 !exp [] []));
 	exp := (r9_combreduction !exp !posit);
 	l_trp := ((!exp,10,!posit,"r_9") :: !l_trp)
-      done;!exp;
+      done; ignore (!exp);
       while (matching_combr10 !exp [] []) <> [] do
         posit := (List.hd (matching_combr10 !exp [] []));
 	exp := (r10_combreduction !exp !posit);
 	l_trp := ((!exp,11,!posit,"r_{10}") :: !l_trp)
-      done;!exp;
+      done; ignore (!exp);
       while (matching_combr11 !exp [] []) <> [] do
         posit := (List.hd (matching_combr11 !exp [] []));
 	exp := (r11_combreduction !exp !posit);
 	l_trp := ((!exp,12,!posit,"r_{11}") :: !l_trp)
-      done;!exp;
+      done; ignore (!exp);
     done;
     !l_trp
 
@@ -297,17 +297,17 @@ let rec lsuspcomb f =
           else
             begin
 	      match r_num with
-                | 17 -> Output.print_in_latex "suspcombrules" 4;
+                | 17 -> ignore (Output.print_in_latex "suspcombrules" 4);
                         internal_loop l_upl
 	        | 18 -> 
                     internal_loop (List.tl l_upl)
 	        | 19 ->
 		    print_newline();
 		    Output.print_history (List.rev l_upl) print_exp_suscomb; 
-		    Input.get_line ();       
+		    ignore (Input.get_line ());
 		    internal_loop l_upl
 	        | 20 -> 
-		    Output.latex_output l_upl;
+		    ignore (Output.latex_output l_upl);
 		    internal_loop l_upl
 	        | 21 -> 
                     Output.save_red l_upl init_exp 4;

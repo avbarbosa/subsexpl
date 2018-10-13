@@ -67,10 +67,10 @@ let rec lpure f =
 	        | 6 ->
 		    print_newline ();
 		    Output.print_history (List.rev l_upl) Lambdase.print_exp_lse; 
-		    Input.get_line ();       
+		    ignore (Input.get_line ());
 		    internal_loop l_upl
 	        | 7 -> 
-		    Output.latex_output l_upl;
+		    ignore (Output.latex_output l_upl);
 		    internal_loop l_upl
 	        | 8 -> 
                     Output.save_red l_upl init_exp 0;
@@ -138,10 +138,10 @@ let rec lpurecomb f =
 	        | 6 ->
 		    print_newline ();
 		    Output.print_history (List.rev l_upl) Suspcomb.print_exp_suscomb; 
-		    Input.get_line ();       
+		    ignore (Input.get_line ());
 		    internal_loop l_upl
 	        | 7 -> 
-		    Output.latex_output l_upl;
+		    ignore (Output.latex_output l_upl);
 		    internal_loop l_upl
 	        | 8 -> 
                     Output.save_red l_upl init_exp 0;

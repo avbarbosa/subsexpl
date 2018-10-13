@@ -39,14 +39,14 @@ let rec main_loop_new () =
         | "0" -> Pure.lpure  main_loop_new (* opcoes anteriores *)
         | "1" -> Pure.lpurecomb  main_loop_new (* opcoes anteriores *)
         | "4" -> 
-            Output.lgrammar ();
+            ignore (Output.lgrammar ());
             main_loop_new ()
         | "5" -> 
-            Output.new_grammar ();
+            ignore (Output.new_grammar ());
             main_loop_new ()
         | "6" -> raise Quit
         | _ -> 
-	    print_string "Invalid Input!\n"; 
+	    print_string "Invalid Input!\n";
             main_loop_new ()
   with Quit -> print_string "Good bye!\n"  
 
@@ -63,7 +63,7 @@ let rec main_loop () =
         | "3" -> Susp.lsusp main_loop 
         | "4" -> Suspcomb.lsuspcomb main_loop
         | "5" -> 
-            Output.lgrammar ();
+            ignore (Output.lgrammar ());
             main_loop ()
         | "6" -> raise Quit
         | _ -> 

@@ -353,7 +353,7 @@ let print_history_in_latex output_file_name exp_list =
 (** Function that generates the dvi file with the rewriting rules of
     the selected calculus. Requires xdvi installed. *)
 let print_in_latex () arg =
-  Unix.system ("latex "^ arg);
+  ignore (Unix.system ("latex "^ arg));
   Unix.system ("xdvi "^ arg ^" &")
     
 (** Generate the latex code into a file. *)
@@ -440,7 +440,7 @@ let print_in_latex output_file_name op =
     let _ = Unix.write_substring output_file_desc s 0 (String.length s)
     in ()
   in
-  let rec output_rules = 
+  let _ = 
     match op with
       | 1 -> 
           print_on_file(
@@ -644,6 +644,6 @@ let print_in_latex output_file_name op =
       | _ -> assert false
   in          
     Unix.close output_file_desc;
-    Unix.system ("latex " ^ output_file_name);  
+    ignore (Unix.system ("latex " ^ output_file_name));
     Unix.system ("xdvi " ^ output_file_name ^" & ")
       
