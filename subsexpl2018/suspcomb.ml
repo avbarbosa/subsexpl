@@ -57,6 +57,7 @@ and print_env env =
         print_envt envt;
         print_string "::";
         print_env env1
+    | _ -> assert false
 and print_envt envt =
   match envt with   
     | Ar i -> 
@@ -68,6 +69,7 @@ and print_envt envt =
         print_string ",";
         print_int i;
         print_string ")"
+    | _ -> assert false
  
 (** This function takes an expression exp as argument and generates a list of pairs of the form (rule name, positions where this rule apply). *)
 let lst_suscomb exp = 

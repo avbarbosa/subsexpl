@@ -29,46 +29,63 @@ open Setypes
 
 let isPaar et =
 match et with
-Paar(_,_) -> true |
-_ -> false;;
+    Paar(_,_) -> true
+  | _ -> false
+;;
 
 let isAr et =
 match et with
-Ar(_) -> true |
-_ -> false;;
+    Ar(_) -> true
+  | _ -> false
+;;
 
 let isSusp t =
 match t with
-Sp(_,_,_,_) -> true |
-_ -> false;;
+    Sp(_,_,_,_) -> true
+  | _ -> false
+;;
 
 let indofPaar et =
 match et with
-Paar(_,l) -> l ;;
+    Paar(_,l) -> l
+  | _ -> assert false
+;;
 
 let termofPaar et =
 match et with
-Paar(t,_) -> t ;;
+    Paar(t,_) -> t
+  | _ -> assert false
+;;
 
 let indofAr et =
 match et with
-Ar(l) -> l ;;
+    Ar(l) -> l 
+  | _ -> assert false
+;;
 
 let termo1suspofPaar et =
 match et with
-Paar(Sp(v,_,_,_),_) -> v ;;
+    Paar(Sp(v,_,_,_),_) -> v
+  | _ -> assert false
+;;
 
 let termo2suspofPaar et =
 match et with
-Paar(Sp(_,u,_,_),_) -> u ;;
+    Paar(Sp(_,u,_,_),_) -> u
+  | _ -> assert false
+;;
 
 let termo3suspofPaar et =
 match et with
-Paar(Sp(_,_,q,_),_) -> q ;;
+    Paar(Sp(_,_,q,_),_) -> q
+  | _ -> assert false
+;;
 
 let termo4suspofPaar et =
 match et with
-Paar(Sp(_,_,_,z),_) -> z ;;
+    Paar(Sp(_,_,_,z),_) -> z
+  | _ -> assert false
+;;
 
 
 let rec matchingBetascomb exp l pos =
@@ -89,12 +106,13 @@ and  matchingBetaEnvcomb env l pos =
        Nilen             -> l |
        Con(envt, env1)   -> append (matchingBetaEtcomb envt l (append pos [1]))
                                    (matchingBetaEnvcomb env1 [] (append pos [2]))
-  | _ -> assert false 
+  | _ -> assert false
 and  matchingBetaEtcomb envt l pos =
       match envt with
         Ar i ->  l |
         Paar(e1,i)        -> (matchingBetascomb e1 l (append pos [1]))
-   | _ -> assert false;;   
+   | _ -> assert false
+;;
 
 let rec matchingBetascombL exp l pos =
 match exp with
@@ -120,12 +138,12 @@ and  matchingBetaEnvcombL env l pos =
        Nilen             -> l |
        Con(envt, env1)   -> append (matchingBetaEtcombL envt l (append pos [1]))
                                    (matchingBetaEnvcombL env1 [] (append pos [2])) 
-  | _ -> assert false 
+  | _ -> assert false
 and  matchingBetaEtcombL envt l pos =
       match envt with
         Ar i ->  l |
         Paar(e1,i)        -> (matchingBetascombL e1 l (append pos [1]))
-  | _ -> assert false 
+  | _ -> assert false
 ;;   
 
 let rec matching_combr1 exp l pos =
@@ -145,12 +163,12 @@ and matchingEnv_combr1 env l pos =
        Nilen             -> l |
        Con(envt, env1)   -> append (matchingEt_combr1 envt l (append pos [1]))
                                    (matchingEnv_combr1 env1 [] (append pos [2])) 
-  | _ -> assert false 
+  | _ -> assert false
 and matchingEt_combr1 envt l pos =
      match envt with
         Ar i ->  l |
         Paar(e1,i)        -> (matching_combr1 e1 l (append pos [1]))
-  | _ -> assert false 
+  | _ -> assert false
 ;;   
 
 let rec matching_combr2 exp l pos =
@@ -170,12 +188,12 @@ and matchingEnv_combr2 env l pos =
        Nilen             -> l |
        Con(envt, env1)   -> append (matchingEt_combr2 envt l (append pos [1]))
                                    (matchingEnv_combr2 env1 [] (append pos [2])) 
-  | _ -> assert false 
+  | _ -> assert false
 and matchingEt_combr2 envt l pos =
      match envt with
         Ar i ->  l |
         Paar(e1,i)        -> (matching_combr2 e1 l (append pos [1]))
-  | _ -> assert false 
+  | _ -> assert false
 ;;   
 
 let rec matching_combr3 exp l pos =
@@ -195,19 +213,22 @@ and matchingEnv_combr3 env l pos =
        Nilen             -> l |
        Con(envt, env1)   -> append (matchingEt_combr3 envt l (append pos [1]))
                                    (matchingEnv_combr3 env1 [] (append pos [2])) 
-  | _ -> assert false 
+  | _ -> assert false
 and matchingEt_combr3 envt l pos =
      match envt with
         Ar i ->  l |
         Paar(e1,i)        -> (matching_combr3 e1 l (append pos [1]))
-  | _ -> assert false 
+  | _ -> assert false
 ;;   
 
 
 let rec select env indx =
 match env with
-Con(et,envl)  -> if indx = 1 then et 
-                  else (select envl (indx -1));;
+    Con(et,envl)  -> if indx = 1
+                     then et 
+                     else (select envl (indx -1))
+  | _ -> assert false
+;;
 
 
 let rec matching_combr4 exp l pos =
@@ -228,12 +249,12 @@ and matchingEnv_combr4 env l pos =
        Nilen             -> l |
        Con(envt, env1)   -> append (matchingEt_combr4 envt l (append pos [1]))
                                    (matchingEnv_combr4 env1 [] (append pos [2])) 
-  | _ -> assert false 
+  | _ -> assert false
 and matchingEt_combr4 envt l pos =
      match envt with
         Ar i ->  l | 
         Paar(e1,i)        -> (matching_combr4 e1 l (append pos [1]))
-  | _ -> assert false 
+  | _ -> assert false
 ;;   
 
 
@@ -256,12 +277,12 @@ and matchingEnv_combr5 env l pos =
        Nilen             -> l |
        Con(envt, env1)   -> append (matchingEt_combr5 envt l (append pos [1]))
                                    (matchingEnv_combr5 env1 [] (append pos [2])) 
-  | _ -> assert false 
+  | _ -> assert false
 and matchingEt_combr5 envt l pos =
      match envt with
         Ar i ->  l | 
         Paar(e1,i)        -> (matching_combr5 e1 l (append pos [1]))
-  | _ -> assert false 
+  | _ -> assert false
 ;;   
 
 let rec matching_combr6 exp l pos =
@@ -283,12 +304,12 @@ and matchingEnv_combr6 env l pos =
        Nilen             -> l |
        Con(envt, env1)   -> append (matchingEt_combr6 envt l (append pos [1]))
                                    (matchingEnv_combr6 env1 [] (append pos [2])) 
-  | _ -> assert false 
+  | _ -> assert false
 and matchingEt_combr6 envt l pos =
      match envt with
         Ar i ->  l |
         Paar(e1,i)        -> (matching_combr6 e1 l (append pos [1]))
-  | _ -> assert false 
+  | _ -> assert false
 ;;   
 
 let rec matching_combr7 exp l pos =
@@ -309,12 +330,12 @@ and matchingEnv_combr7 env l pos =
        Nilen             -> l |
        Con(envt, env1)   -> append (matchingEt_combr7 envt l (append pos [1]))
                                    (matchingEnv_combr7 env1 [] (append pos [2])) 
-  | _ -> assert false 
+  | _ -> assert false
 and matchingEt_combr7 envt l pos =
      match envt with
         Ar i ->  l |
         Paar(e1,i)        -> (matching_combr7 e1 l (append pos [1]))
-  | _ -> assert false 
+  | _ -> assert false
 ;;   
 
 let rec matching_combr8 exp l pos =
@@ -334,12 +355,12 @@ and matchingEnv_combr8 env l pos =
        Nilen             -> l |
        Con(envt, env1)   -> append (matchingEt_combr8 envt l (append pos [1]))
                                    (matchingEnv_combr8 env1 [] (append pos [2])) 
-  | _ -> assert false 
+  | _ -> assert false
 and matchingEt_combr8 envt l pos =
      match envt with
         Ar i ->  l |
         Paar(e1,i)        -> (matching_combr8 e1 l (append pos [1]))
-  | _ -> assert false 
+  | _ -> assert false
 ;;   
 
 let rec matching_combr9 exp l pos =
@@ -359,12 +380,12 @@ and matchingEnv_combr9 env l pos =
        Nilen             -> l |
        Con(envt, env1)   -> append (matchingEt_combr9 envt l (append pos [1]))
                                    (matchingEnv_combr9 env1 [] (append pos [2])) 
-  | _ -> assert false 
+  | _ -> assert false
 and matchingEt_combr9 envt l pos =
      match envt with
         Ar i ->  l |
         Paar(e1,i)        -> (matching_combr9 e1 l (append pos [1]))
-  | _ -> assert false 
+  | _ -> assert false
 ;;   
 
 let rec matching_combr10 exp l pos =
@@ -386,12 +407,12 @@ and matchingEnv_combr10 env l pos =
        Nilen             -> l |
        Con(envt, env1)   -> append (matchingEt_combr10 envt l (append pos [1]))
                                    (matchingEnv_combr10 env1 [] (append pos [2])) 
-  | _ -> assert false 
+  | _ -> assert false
 and matchingEt_combr10 envt l pos =
      match envt with
         Ar i ->  l | 
         Paar(e1,i)        -> (matching_combr10 e1 l (append pos [1]))
-  | _ -> assert false 
+  | _ -> assert false
 ;;   
 
 let rec matching_combr11 exp l pos =
@@ -413,12 +434,12 @@ and matchingEnv_combr11 env l pos =
        Nilen             -> l |
        Con(envt, env1)   -> append (matchingEt_combr11 envt l (append pos [1]))
                                    (matchingEnv_combr11 env1 [] (append pos [2])) 
-  | _ -> assert false 
+  | _ -> assert false
 and matchingEt_combr11 envt l pos =
      match envt with
         Ar i ->  l | 
         Paar(e1,i)        -> (matching_combr11 e1 l (append pos [1]))
-  | _ -> assert false 
+  | _ -> assert false
 ;;   
 
 
@@ -435,12 +456,12 @@ and occurdummy4_Env env =
      match env with
        Nilen             -> false |
        Con(envt,env1)   -> ((occurdummy4_Et envt) || (occurdummy4_Env env1)) 
-  | _ -> assert false 
+  | _ -> assert false
 and occurdummy4_Et envt =
      match envt with
         Ar i ->  false |
         Paar(e1,i)        -> (occurdummy4 e1)
-  | _ -> assert false 
+  | _ -> assert false
 ;;   
  
 let rec spcombnorm exp = 
@@ -480,11 +501,11 @@ match env with
        Nilen             -> l |
        Con(envt, env1)   -> append (matching_Etascomb_Et envt l (append pos [1]))
                                    (matching_Etascomb_Env env1 [] (append pos [2])) 
-  | _ -> assert false 
+  | _ -> assert false
 and matching_Etascomb_Et envt l pos =
      match envt with
         Ar i ->  l |
         Paar(e1,i)        -> (matching_Etascomb e1 l (append pos [1]))
-  | _ -> assert false 
+  | _ -> assert false
 ;;   
 

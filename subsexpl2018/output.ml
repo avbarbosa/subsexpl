@@ -250,6 +250,7 @@ let rec latex_string_of_exp exp pos =
 				  "\\SESp{" ^ (latex_string_of_exp e [3]) ^ "}{" ^ (string_of_int i1) ^ "}{" ^ (string_of_int i2) ^ "}{" ^ (latex_string_of_env env l) ^ "}"
 			      | _ ->  
 				  "\\SESp{" ^ (latex_string_of_exp e [3]) ^ "}{" ^ (string_of_int i1) ^ "}{" ^ (string_of_int i2) ^ "}{" ^ (latex_string_of_env env [3]) ^ "}" ) 
+    | _ -> assert false
 and latex_string_of_sub subs pos = match subs with
   | Id -> "\\SEId"
   | Up -> "\\SEUp"
