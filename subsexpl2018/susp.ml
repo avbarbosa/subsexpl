@@ -118,22 +118,22 @@ let lst_sus exp =
 
 (** This is an auxiliary function for the 'random' normalisation function. *)
 let lredices3 exp =
-  if ( ((matching_r1 exp [] []) <> [])      or
-       ((matching_r2 exp [] []) <> [])      or
-       ((matching_r3 exp [] []) <> [])      or
-       ((matching_r4 exp [] []) <> [])      or
-       ((matching_r5 exp [] []) <> [])      or
-       ((matching_r6 exp [] []) <> [])      or
-       ((matching_r7 exp [] []) <> [])      or
-       ((matching_m1 exp [] []) <> [])      or
-       ((matching_m2 exp [] []) <> [])      or
-       ((matching_m3 exp [] []) <> [])      or
-       ((matching_m4 exp [] []) <> [])      or
-       ((matching_m5 exp [] []) <> [])      or
-       ((matching_m6 exp [] []) <> [])      or
-       ((matching_m7 exp [] []) <> [])      or
-       ((matching_m8 exp [] []) <> [])      or
-       ((matching_m9 exp [] []) <> [])      or
+  if ( ((matching_r1 exp [] []) <> [])      ||
+       ((matching_r2 exp [] []) <> [])      ||
+       ((matching_r3 exp [] []) <> [])      ||
+       ((matching_r4 exp [] []) <> [])      ||
+       ((matching_r5 exp [] []) <> [])      ||
+       ((matching_r6 exp [] []) <> [])      ||
+       ((matching_r7 exp [] []) <> [])      ||
+       ((matching_m1 exp [] []) <> [])      ||
+       ((matching_m2 exp [] []) <> [])      ||
+       ((matching_m3 exp [] []) <> [])      ||
+       ((matching_m4 exp [] []) <> [])      ||
+       ((matching_m5 exp [] []) <> [])      ||
+       ((matching_m6 exp [] []) <> [])      ||
+       ((matching_m7 exp [] []) <> [])      ||
+       ((matching_m8 exp [] []) <> [])      ||
+       ((matching_m9 exp [] []) <> [])      ||
        ((matching_m10 exp [] []) <> []) ) then true else false
 
 (** This is the 'randon' normalisation function for the suspension calculus. *)

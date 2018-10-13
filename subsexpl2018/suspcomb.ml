@@ -93,16 +93,16 @@ let lst_suscomb exp =
 
 (** This is an auxiliary function for the 'random' normalisation function. *)
 let lredices4 exp =
-  if ( ((matching_combr1 exp [] []) <> [])      or
-       ((matching_combr2 exp [] []) <> [])      or
-       ((matching_combr3 exp [] []) <> [])      or
-       ((matching_combr4 exp [] []) <> [])      or
-       ((matching_combr5 exp [] []) <> [])      or
-       ((matching_combr6 exp [] []) <> [])      or
-       ((matching_combr7 exp [] []) <> [])      or
-       ((matching_combr8 exp [] []) <> [])      or
-       ((matching_combr9 exp [] []) <> [])      or
-       ((matching_combr10 exp [] []) <> [])      or
+  if ( ((matching_combr1 exp [] []) <> [])      ||
+       ((matching_combr2 exp [] []) <> [])      ||
+       ((matching_combr3 exp [] []) <> [])      ||
+       ((matching_combr4 exp [] []) <> [])      ||
+       ((matching_combr5 exp [] []) <> [])      ||
+       ((matching_combr6 exp [] []) <> [])      ||
+       ((matching_combr7 exp [] []) <> [])      ||
+       ((matching_combr8 exp [] []) <> [])      ||
+       ((matching_combr9 exp [] []) <> [])      ||
+       ((matching_combr10 exp [] []) <> [])     ||
        ((matching_combr11 exp [] []) <> []))  then true else false
 
 (** This is the 'random' normalisation function for the suspension calculus. *)

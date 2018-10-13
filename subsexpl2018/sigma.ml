@@ -91,17 +91,17 @@ let lst_ls exp =
     
 (** This is an auxiliary function used by the normalisation function. *)
 let lredices1 exp =
-  if ( ((matchingAbs exp [] []) <> [])       or 
-       ((matchingClos exp [] []) <> [])      or
-       ((matchingVarCons exp [] []) <> [])   or
-       ((matchingId exp [] []) <> [])        or
-       ((matchingAssoc exp [] []) <> [])     or
-       ((matchingMap exp [] []) <> [])       or
-       ((matchingIdL exp [] []) <> [])       or
-       ((matchingIdR exp [] []) <> [])       or
-       ((matchingShiftCons exp [] []) <> []) or
-       ((matchingVarShift exp [] []) <> [])  or
-       ((matchingSCons exp [] []) <> [])     or
+  if ( ((matchingAbs exp [] []) <> [])       || 
+       ((matchingClos exp [] []) <> [])      ||
+       ((matchingVarCons exp [] []) <> [])   ||
+       ((matchingId exp [] []) <> [])        ||
+       ((matchingAssoc exp [] []) <> [])     ||
+       ((matchingMap exp [] []) <> [])       ||
+       ((matchingIdL exp [] []) <> [])       ||
+       ((matchingIdR exp [] []) <> [])       ||
+       ((matchingShiftCons exp [] []) <> []) ||
+       ((matchingVarShift exp [] []) <> [])  ||
+       ((matchingSCons exp [] []) <> [])     ||
        ((matchingApp exp [] []) <> []) ) then true else false
     
 (** This is the 'random' normalisation function. *)

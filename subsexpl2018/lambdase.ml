@@ -81,17 +81,17 @@ let lst_lse exp =
 
 (** This is an auxiliary function used by the normalisation function. *)
 let lredices2 exp =
-    if ( ((matchingSLtransition exp [] []) <> [])      or 
-         ((matchingSAtransition exp [] []) <> [])      or
-         ((matchingSDtransition exp [] []) <> [])      or
-         ((matchingPLtransition exp [] []) <> [])      or
-         ((matchingPAtransition exp [] []) <> [])      or
-         ((matchingPDtransition exp [] []) <> [])      or
-         ((matchingSStransition exp [] []) <> [])      or
-         ((matchingSPtransition1 exp [] []) <> [])     or
-         ((matchingSPtransition2 exp [] []) <> [])     or
-         ((matchingPStransition exp [] []) <> [])      or
-         ((matchingPPtransition1 exp [] []) <> [])     or
+    if ( ((matchingSLtransition exp [] []) <> [])      || 
+         ((matchingSAtransition exp [] []) <> [])      ||
+         ((matchingSDtransition exp [] []) <> [])      ||
+         ((matchingPLtransition exp [] []) <> [])      ||
+         ((matchingPAtransition exp [] []) <> [])      ||
+         ((matchingPDtransition exp [] []) <> [])      ||
+         ((matchingSStransition exp [] []) <> [])      ||
+         ((matchingSPtransition1 exp [] []) <> [])     ||
+         ((matchingSPtransition2 exp [] []) <> [])     ||
+         ((matchingPStransition exp [] []) <> [])      ||
+         ((matchingPPtransition1 exp [] []) <> [])     ||
          ((matchingPPtransition2 exp [] []) <> []) ) then true else false
       
 (** This is the normalisation function. *)
