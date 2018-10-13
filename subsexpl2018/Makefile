@@ -123,7 +123,7 @@ WITHDBM =dbm.cma -cclib -lmldbm -cclib -lndbm
 
 #.PHONY: ledit
 
-all: depend $(EXEC).bin 
+all: .depend $(EXEC).bin 
 
 opt : $(EXEC).opt
 
@@ -199,7 +199,5 @@ clean:
 
 .depend: $(SOURCES2)
 	for i in $(SOURCES2); do camlp5o pr_depend.cmo -impl $$i; done > .depend
-
-depend: depend
 
 include .depend
